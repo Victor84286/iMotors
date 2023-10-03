@@ -1,0 +1,12 @@
+br\edu\ibmec\cloudcomputing\imotors\errorHandler\Validation.class
+br\edu\ibmec\cloudcomputing\imotors\service\CommentService.class
+br\edu\ibmec\cloudcomputing\imotors\ImotorsApplication.class
+br\edu\ibmec\cloudcomputing\imotors\model\Comments.class
+br\edu\ibmec\cloudcomputing\imotors\model\Post.class
+br\edu\ibmec\cloudcomputing\imotors\controller\PostController.class
+br\edu\ibmec\cloudcomputing\imotors\errorHandler\ValidationErrorResponse.class
+br\edu\ibmec\cloudcomputing\imotors\repository\CommentRepository.class
+br\edu\ibmec\cloudcomputing\imotors\errorHandler\ErrorHandlerController.class
+br\edu\ibmec\cloudcomputing\imotors\controller\CommentController.class
+br\edu\ibmec\cloudcomputing\imotors\service\PostService.class
+br\edu\ibmec\cloudcomputing\imotors\repository\PostRepository.class
