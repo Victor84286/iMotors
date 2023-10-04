@@ -1,0 +1,6 @@
+{
+    "java.configuration.updateBuildConfiguration": "automatic",
+    "appService.preDeployTask": "package:imotors",
+    "appService.deploySubpath": "target\\imotors-0.0.1-SNAPSHOT.jar",
+    "appService.defaultWebAppToDeploy": "/subscriptions/843e5a70-f41c-466c-8ceb-2a9263e3f2cb/resourceGroups/ibmec-cloud/providers/Microsoft.Web/sites/imotors"
+}
