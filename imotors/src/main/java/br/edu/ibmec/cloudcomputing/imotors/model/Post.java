@@ -3,6 +3,8 @@ package br.edu.ibmec.cloudcomputing.imotors.model;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -11,6 +13,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
@@ -22,9 +25,9 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long Id;
 
-    @Column(nullable = false)
-    @NotBlank(message = "Campo autor do post não pode ser vazio")
-    private String author;
+    @ManyToOne
+    @JsonIgnore
+    private Usuario usuario;
 
     @Column(nullable = false)
     private LocalDateTime dtPublish;
@@ -73,12 +76,12 @@ public class Post {
         this.article = article;
     }
 
-    public String getAuthor() {
-        return author;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     public long getId() {

@@ -18,10 +18,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.edu.ibmec.cloudcomputing.imotors.model.Post;
 import br.edu.ibmec.cloudcomputing.imotors.service.PostService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/post")
+@Tag(name = "Post", description = "")
 class PostController {
 
     @Autowired
@@ -52,12 +54,12 @@ class PostController {
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-    }   
+    }
 
-    @PostMapping
-    public ResponseEntity<Post> create(@Valid @RequestBody Post item) {
+    @PostMapping("{id}")
+    public ResponseEntity<Post> create(@PathVariable("id") long idUsuario, @Valid @RequestBody Post item) {
         try {
-            Post savedItem = postService.create(item);
+            Post savedItem = postService.create(idUsuario, item);
             return new ResponseEntity<>(savedItem, HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.EXPECTATION_FAILED);

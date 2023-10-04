@@ -18,10 +18,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.edu.ibmec.cloudcomputing.imotors.model.Comments;
 import br.edu.ibmec.cloudcomputing.imotors.service.CommentService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/comment")
+@Tag(name = "Comentario", description = "")
 class CommentController {
 
     @Autowired
@@ -54,7 +56,7 @@ class CommentController {
         }
     }
 
-    @PostMapping("{idPost}")
+    @PostMapping("{id}")
     public ResponseEntity<Comments> create(@PathVariable("id") long idPost, @Valid @RequestBody Comments item) {
         try {
             Comments savedItem = commentService.save(idPost, item);
