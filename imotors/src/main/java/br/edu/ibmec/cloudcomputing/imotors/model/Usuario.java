@@ -17,7 +17,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 
 @Entity
-@Table(name = "pessoas")
+@Table(name = "usuarios")
 public class Usuario {
 
     @Id
@@ -39,11 +39,11 @@ public class Usuario {
     private String email;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
-    @JoinColumn(name = "pessoa_id")
+    @JoinColumn(name = "usuario_id")
     private List<Post> posts;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
-    @JoinColumn(name = "pessoa_id")
+    @JoinColumn(name = "endereco_id")
     private List<Endereco> enderecos;
 
     public List<Endereco> getEnderecos() {
