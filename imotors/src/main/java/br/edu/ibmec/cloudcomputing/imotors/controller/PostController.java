@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import br.edu.ibmec.cloudcomputing.imotors.model.Post;
 import br.edu.ibmec.cloudcomputing.imotors.service.PostService;
@@ -83,5 +85,17 @@ class PostController {
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.EXPECTATION_FAILED);
         }
+    }
+
+    @PostMapping("{id}/uploadFile")
+    public ResponseEntity<String> uploadPostImage(@PathVariable ("id") long id, @RequestParam("file") MultipartFile file) {
+        try{
+            postService.uploadFileToPost(file, id);
+            return new ResponseEntity<>(HttpStatus.OK);
+
+        } catch (Exception e){
+            return new ResponseEntity<>(HttpStatus.EXPECTATION_FAILED);
+        }
+
     }
 }
