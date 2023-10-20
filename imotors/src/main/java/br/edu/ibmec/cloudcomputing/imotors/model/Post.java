@@ -40,6 +40,9 @@ public class Post {
     @NotBlank(message = "Campo texto do post não pode ser vazio")
     private String article;
 
+    @Column(nullable = true)
+    private String urlImage;
+
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "post_id")
     private List<Comments> comments;
@@ -94,6 +97,14 @@ public class Post {
 
     public void addComment(Comments comment){
         this.comments.add(comment);
+    }
+
+    public String getUrlImage() {
+        return urlImage;
+    }
+
+    public void setUrlImage(String urlImage) {
+        this.urlImage = urlImage;
     }
 
 }

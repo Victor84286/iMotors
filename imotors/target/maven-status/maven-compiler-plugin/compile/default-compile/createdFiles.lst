@@ -1,6 +1,3 @@
-br\edu\ibmec\cloudcomputing\imotors\repository\EnderecoRepository.class
-br\edu\ibmec\cloudcomputing\imotors\service\EnderecoService.class
-br\edu\ibmec\cloudcomputing\imotors\controller\EnderecoController.class
 br\edu\ibmec\cloudcomputing\imotors\repository\UsuarioRepository.class
 br\edu\ibmec\cloudcomputing\imotors\errorHandler\Validation.class
 br\edu\ibmec\cloudcomputing\imotors\service\CommentService.class
@@ -17,5 +14,4 @@ br\edu\ibmec\cloudcomputing\imotors\repository\CommentRepository.class
 br\edu\ibmec\cloudcomputing\imotors\errorHandler\ErrorHandlerController.class
 br\edu\ibmec\cloudcomputing\imotors\controller\CommentController.class
 br\edu\ibmec\cloudcomputing\imotors\service\PostService.class
-br\edu\ibmec\cloudcomputing\imotors\model\Endereco.class
 br\edu\ibmec\cloudcomputing\imotors\repository\PostRepository.class

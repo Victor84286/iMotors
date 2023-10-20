@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import br.edu.ibmec.cloudcomputing.imotors.model.Post;
 import br.edu.ibmec.cloudcomputing.imotors.model.Usuario;
@@ -15,6 +16,9 @@ import br.edu.ibmec.cloudcomputing.imotors.repository.PostRepository;
 public class PostService {
     @Autowired
     private PostRepository postRepository;
+
+    @Autowired
+    private AzureStorageAccountService azureStorageAccountService;
 
     @Autowired UsuarioService usuarioService;
 
@@ -69,4 +73,18 @@ public class PostService {
         this.postRepository.delete(oldPost.get());
 
         }
+
+    public void uploadFileToPost(MultipartFile file, long id) throws Exception{
+        Optional<Post> opPost = this.postRepository.findById(id);
+
+        if(opPost.isPresent() == false) {
+            throw new Exception("Não encontrei o post a ser utilizado");
+        }
+
+        Post post = opPost.get();
+
+        String urlImage = this.azureStorageAccountService.uploadFileToAzure(file);
+        post.setUrlImage(urlImage);
+        this.postRepository.save(post);
+    }
 }

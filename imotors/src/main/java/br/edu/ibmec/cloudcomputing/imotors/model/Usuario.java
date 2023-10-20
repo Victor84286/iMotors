@@ -42,22 +42,6 @@ public class Usuario {
     @JoinColumn(name = "usuario_id")
     private List<Post> posts;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
-    @JoinColumn(name = "endereco_id")
-    private List<Endereco> enderecos;
-
-    public List<Endereco> getEnderecos() {
-        return enderecos;
-    }
-
-    public void setEnderecos(List<Endereco> enderecos) {
-        this.enderecos = enderecos;
-    }
-
-    public void addEndereco(Endereco endereco) {
-        this.enderecos.add(endereco);
-    }
-
     public List<Post> getPosts() {
         return posts;
     }
