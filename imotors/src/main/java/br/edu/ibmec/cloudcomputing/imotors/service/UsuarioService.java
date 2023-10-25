@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import br.edu.ibmec.cloudcomputing.imotors.exception.BusinessException;
 import br.edu.ibmec.cloudcomputing.imotors.model.Usuario;
 import br.edu.ibmec.cloudcomputing.imotors.repository.UsuarioRepository;
 
@@ -25,19 +26,19 @@ public class UsuarioService {
         return this._usuarioRepository.findById(id);
     }
 
-    public Usuario save(Usuario usuario) throws Exception {
+    public Usuario save(Usuario usuario) throws BusinessException {
         if (this._usuarioRepository.countByCpf(usuario.getCpf()) > 0) {
-            throw new Exception("Este CPF já existe na base de dados");
+            throw new BusinessException("Este CPF já existe na base de dados");
         }
         this._usuarioRepository.save(usuario);
         return usuario;
     }
 
-    public Usuario update(long id, Usuario newData) throws Exception {
+    public Usuario update(long id, Usuario newData) throws BusinessException {
         Optional<Usuario> result = this._usuarioRepository.findById(id);
 
         if (result.isPresent() == false) {
-            throw new Exception("Não encontrei a usuario a ser atualizada");
+            throw new BusinessException("Não encontrei a usuario a ser atualizada");
         }
 
         Usuario pessoaASerAtualizada = result.get();
@@ -47,11 +48,11 @@ public class UsuarioService {
         return pessoaASerAtualizada;
     }
 
-    public void delete(long id) throws Exception {
+    public void delete(long id) throws BusinessException {
         Optional<Usuario> pessoaASerExcluida = this._usuarioRepository.findById(id);
         // Não achei a usuario a ser excluida
         if (pessoaASerExcluida.isPresent() == false) {
-            throw new Exception("Não encontrei a usuario a ser atualizada");
+            throw new BusinessException("Não encontrei a usuario a ser atualizada");
         }
         this._usuarioRepository.delete(pessoaASerExcluida.get());
     }

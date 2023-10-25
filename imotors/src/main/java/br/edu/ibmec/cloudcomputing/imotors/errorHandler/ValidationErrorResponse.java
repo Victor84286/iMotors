@@ -5,25 +5,30 @@ import java.util.List;
 
 public class ValidationErrorResponse {
     private String errorMessage = "Aconteceu um problema com suasolicitacao";
-    private List<Validation> errors = new ArrayList<Validation>();
+    private List<Validation> validationErrors = new ArrayList<Validation>();
+    private List<BusinessError> businessErrors = new ArrayList<BusinessError>();
+
+    public List<BusinessError> getBusinessErrors() {
+        return businessErrors;
+    }
+
+    public void setBusinessErrors(List<BusinessError> businessErrors) {
+        this.businessErrors = businessErrors;
+    }
 
     public List<Validation> getErrors() {
-        return errors;
+        return validationErrors;
     }
 
     public void setErrors(List<Validation> errors) {
-        this.errors = errors;
+        this.validationErrors = errors;
     }
 
     public String getErrorMessage() {
         return errorMessage;
     }
 
-    public void setErrorMessage(String errorMessage) {
-        this.errorMessage = errorMessage;
-    }
-
     public void addErrorValidation(String field, String message){
-        this.errors.add(new Validation(field, message));
+        this.validationErrors.add(new Validation(field, message));
     }
 }

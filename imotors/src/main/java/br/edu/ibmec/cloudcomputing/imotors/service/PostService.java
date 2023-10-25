@@ -1,5 +1,6 @@
 package br.edu.ibmec.cloudcomputing.imotors.service;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import br.edu.ibmec.cloudcomputing.imotors.exception.PostException;
 import br.edu.ibmec.cloudcomputing.imotors.model.Post;
 import br.edu.ibmec.cloudcomputing.imotors.model.Usuario;
 import br.edu.ibmec.cloudcomputing.imotors.repository.PostRepository;
@@ -22,11 +24,11 @@ public class PostService {
 
     @Autowired UsuarioService usuarioService;
 
-    public Post create(long idUsuario, Post post) throws Exception{
+    public Post create(long idUsuario, Post post) throws PostException{
         Optional<Usuario> opUsuario = this.usuarioService.findById(idUsuario);
 
         if(opUsuario.isPresent() == false)
-            throw new Exception("Post não encontrado");
+            throw new PostException("Post não encontrado");
 
         if(post.getDtPublish() == null){
             post.setDtPublish(LocalDateTime.now());
@@ -50,10 +52,10 @@ public class PostService {
         this.postRepository.save(item);
     }
 
-    public Post update(long id, Post newData) throws Exception{
+    public Post update(long id, Post newData) throws PostException{
         Optional<Post> oldPost = this.postRepository.findById(id);
         if(oldPost.isPresent() == false){
-            throw new Exception("Não encontrei o post a ser atualizado");
+            throw new PostException("Não encontrei o post a ser atualizado");
         }
 
         Post post = oldPost.get();
@@ -64,21 +66,21 @@ public class PostService {
         return post;
     }
 
-    public void delete(long id) throws Exception {
+    public void delete(long id) throws PostException {
         Optional<Post> oldPost = this.postRepository.findById(id);
         if(oldPost.isPresent() == false){
-            throw new Exception("Não encontrei o post a ser atualizado");
+            throw new PostException("Não encontrei o post a ser atualizado");
         }
 
         this.postRepository.delete(oldPost.get());
 
         }
 
-    public void uploadFileToPost(MultipartFile file, long id) throws Exception{
+    public void uploadFileToPost(MultipartFile file, long id) throws PostException, IOException{
         Optional<Post> opPost = this.postRepository.findById(id);
 
         if(opPost.isPresent() == false) {
-            throw new Exception("Não encontrei o post a ser utilizado");
+            throw new PostException("Não encontrei o post a ser utilizado");
         }
 
         Post post = opPost.get();
