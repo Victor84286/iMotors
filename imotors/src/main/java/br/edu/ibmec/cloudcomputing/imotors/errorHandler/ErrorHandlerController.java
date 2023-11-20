@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import br.edu.ibmec.cloudcomputing.imotors.exception.BusinessException;
+
 @ControllerAdvice
 public class ErrorHandlerController {
 
@@ -16,7 +18,7 @@ public class ErrorHandlerController {
     @ResponseBody
     public ValidationErrorResponse validtionErrorHandler(MethodArgumentNotValidException e){
         ValidationErrorResponse result = new ValidationErrorResponse();
-        
+
         for (FieldError error : e.getBindingResult().getFieldErrors()) {
             result.addErrorValidation(error.getField(), error.getDefaultMessage());
         }
@@ -24,4 +26,12 @@ public class ErrorHandlerController {
         return result;
     }
 
+    @ExceptionHandler(BusinessException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ResponseBody
+    public ValidationErrorResponse businessExceptionHandler(BusinessException e){
+        ValidationErrorResponse result = new ValidationErrorResponse();
+        result.getBusinessErrors().add(new BusinessError(e.getClass().getSimpleName(), e.getMessage()));
+        return result;
+    }
 }

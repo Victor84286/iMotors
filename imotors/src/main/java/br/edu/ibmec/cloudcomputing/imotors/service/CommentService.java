@@ -7,8 +7,11 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.edu.ibmec.cloudcomputing.imotors.exception.CommentException;
+import br.edu.ibmec.cloudcomputing.imotors.exception.StreamException;
 import br.edu.ibmec.cloudcomputing.imotors.model.Comments;
 import br.edu.ibmec.cloudcomputing.imotors.model.Post;
+import br.edu.ibmec.cloudcomputing.imotors.model.Streams;
 import br.edu.ibmec.cloudcomputing.imotors.repository.CommentRepository;
 
 @Service
@@ -27,27 +30,27 @@ public class CommentService {
         return this.commentRepository.findById(id);
     }
 
-    public Comments update(long id, Comments newData) throws Exception{
+    public Comments update(long id, Comments newData) throws CommentException{
         Optional<Comments> opComment = this.commentRepository.findById(id);
 
         if(opComment.isPresent() == false)
-            throw new Exception("Comentario nao encontrado");
+            throw new CommentException("Comentario nao encontrado");
 
         Comments comment = opComment.get();
         comment.setAuthor(newData.getAuthor());
         comment.setText(newData.getText());
-        comment.setDtComment(newData.getDtComment());
+        comment.setDtComment(LocalDateTime.now());
 
         this.commentRepository.save(comment);
         return comment;
 
     }
 
-    public Comments save(long idPost, Comments item) throws Exception {
+    public Comments save(long idPost, Comments item) throws CommentException {
         Optional<Post> opPost = this.postService.getById(idPost);
 
         if(opPost.isPresent() == false)
-            throw new Exception("Post não encontrado");
+            throw new CommentException("Post não encontrado");
 
         if(item.getDtComment() == null){
             item.setDtComment(LocalDateTime.now());
@@ -61,10 +64,10 @@ public class CommentService {
         return item;
     }
 
-    public void delete(long id) throws Exception {
+    public void delete(long id) throws CommentException {
         Optional<Comments> oldComment = this.commentRepository.findById(id);
         if(oldComment.isPresent() == false){
-            throw new Exception("Não encontrei o Comment a ser deletado");
+            throw new CommentException("Não encontrei o Comment a ser deletado");
         }
 
         this.commentRepository.delete(oldComment.get());

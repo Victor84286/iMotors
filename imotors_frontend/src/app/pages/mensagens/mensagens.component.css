@@ -1,0 +1,25 @@
+.container_geral {
+    margin-left: 30vw;
+    width: 40vw;
+    min-height: 75vh;
+    background-color: rgba(29, 28, 42, 1);
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    color: rgba(245, 126, 182, 1);
+    padding-top: 10px;
+}
+
+.card_mensagem{
+    width: 40vw;
+}
+
+.autor, .mensagem {
+    margin-left: 10px;
+}
+
+.linha_divisoria {
+    
+    color: rgba(245, 126, 182, 1);
+    background-color: rgba(245, 126, 182, 1);
+}

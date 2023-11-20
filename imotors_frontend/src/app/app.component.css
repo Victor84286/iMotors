@@ -1,0 +1,48 @@
+.container_header {
+  padding-left: 0vw;
+  padding-right: 0vw;
+  justify-content: space-evenly;
+
+
+}
+
+.abertura_footer {
+  padding-left: 30vw;
+  padding-right: 30vw;
+  justify-content: space-evenly;
+  margin-top: 30px;
+}
+
+.container_footer {
+  position: fixed;
+  bottom: 0;
+  padding-left: 0vw;
+  padding-right: 0vw;
+  justify-content: space-evenly;
+}
+
+.botao_footer {
+  background-color: inherit;
+  border: none;
+  color: white;
+}
+
+.logo_screen_beat {
+  height: 3em;
+}
+
+@media only screen and (max-device-width: 430px) {
+  .container_header {
+    padding-left: 30vw;
+    padding-right: 30vw;
+    justify-content: space-evenly;
+
+
+  }
+
+  .container_footer {
+    padding-left: 30vw;
+    padding-right: 30vw;
+    justify-content: space-evenly;
+  }
+}

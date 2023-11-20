@@ -1,6 +1,9 @@
 package br.edu.ibmec.cloudcomputing.imotors.model;
 
 import java.util.List;
+import java.util.Optional;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -40,6 +43,7 @@ public class Usuario {
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     @JoinColumn(name = "usuario_id")
+    @JsonIgnore
     private List<Post> posts;
 
     public List<Post> getPosts() {

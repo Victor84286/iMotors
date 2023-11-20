@@ -1,0 +1,34 @@
+<div class="post_container">
+    <div id="blank"></div>
+    <div class="container_cards">
+        <mat-card class="card" *ngFor='let post of posts'>
+
+                <mat-card-content>
+                    <div *ngIf="post.urlImage != null">
+                        <img class="imagem_post" src="{{post.urlImage}}" alt="asd">
+                    </div>
+                    <div class="componentes_do_video">
+                        <p class="autor_post">{{post.usuario?.nome}}</p>
+                        <span class="titulo_post">{{post.title}}</span>
+                        <p class="descricao_post">{{post.article}}</p>
+                        <div class="container_streams">
+                            <div *ngFor="let stream of post.streamsDisponiveis">
+                                <a class="link_stream" href="{{stream.site}}">
+                                    <img class="logo_stream" src="{{stream.urlLogo}}" alt="logo {{stream.nome}}">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <br/>
+                    <button mat-icon-button color="primary" (click)="criarComentario()">Comentar</button>
+                    <hr/>
+                    <div *ngFor="let comment of post.comments">
+                        <p>{{comment.author}}</p>
+                        <p>{{comment.text}}</p>
+                        <hr/>
+                    </div>
+                </mat-card-content>
+        </mat-card>
+    </div>
+    <div id="blank2"></div>
+</div>

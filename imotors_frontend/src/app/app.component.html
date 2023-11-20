@@ -1,0 +1,48 @@
+<header>
+
+  <p>
+    <mat-toolbar class="container_header" color="primary">
+      <img class="logo_screen_beat" src="https://ibmecprojetocloudvh.blob.core.windows.net/logos/Captura de tela 2023-11-20 123937.png" alt="SCREEN BEAT">
+      <div>
+        <button  class="botao_footer" (click)="redirect('/home')">
+          <mat-icon>notifications</mat-icon>
+        </button>
+        <button  class="botao_footer" (click)="redirect('/perfil')">
+          <mat-icon>person</mat-icon>
+        </button>
+      </div>
+    </mat-toolbar>
+  </p>
+</header>
+
+
+<router-outlet class="container-body"></router-outlet>
+
+<div class="abertura_footer">
+  <button  class="botao_footer" (click)="redirect('/home')">
+    <mat-icon>home</mat-icon>
+  </button>
+</div>
+
+<footer>
+  <mat-toolbar class="container_footer" color="primary">
+    <div class="example-button-container">
+    </div>
+
+    <button  class="botao_footer" (click)="redirect('/home')">
+      <mat-icon>home</mat-icon>
+    </button>
+    <button class="botao_footer" (click)="redirect('/explorar')">
+      <mat-icon>explore</mat-icon>
+    </button>
+    <button class="botao_footer" (click)="redirect('/lista')">
+      <mat-icon>list_alt</mat-icon>
+    </button>
+    <button class="botao_footer" (click)="redirect('/pesquisa')">
+      <mat-icon>search</mat-icon>
+    </button>
+    <button class="botao_footer" (click)="redirect('/mensagem')">
+      <mat-icon>message</mat-icon>
+    </button>
+  </mat-toolbar>
+</footer>
