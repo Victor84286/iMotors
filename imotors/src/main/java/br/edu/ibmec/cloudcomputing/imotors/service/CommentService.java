@@ -8,8 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.edu.ibmec.cloudcomputing.imotors.exception.CommentException;
+import br.edu.ibmec.cloudcomputing.imotors.exception.StreamException;
 import br.edu.ibmec.cloudcomputing.imotors.model.Comments;
 import br.edu.ibmec.cloudcomputing.imotors.model.Post;
+import br.edu.ibmec.cloudcomputing.imotors.model.Streams;
 import br.edu.ibmec.cloudcomputing.imotors.repository.CommentRepository;
 
 @Service
@@ -37,7 +39,7 @@ public class CommentService {
         Comments comment = opComment.get();
         comment.setAuthor(newData.getAuthor());
         comment.setText(newData.getText());
-        comment.setDtComment(newData.getDtComment());
+        comment.setDtComment(LocalDateTime.now());
 
         this.commentRepository.save(comment);
         return comment;

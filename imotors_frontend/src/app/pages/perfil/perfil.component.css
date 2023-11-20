@@ -1,0 +1,58 @@
+body {
+    background-color: rgba(29, 28, 42, 1);
+}
+
+.container_perfil {
+    margin-left: 30vw;
+    width: 40vw;
+
+    background-color: rgba(29, 28, 42, 1);
+    color: rgba(245, 126, 182, 1);
+}
+
+.container_topo_perfil {
+    display: flex;
+}
+
+#foto_perfil {
+    margin: 10px;
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 25px;
+}
+
+#nome_usuario {
+    margin-top: 10px;
+    font-size: 30px;
+    font-weight: 400;
+}
+
+#descrição_usuario {
+    font-size: 20px;
+}
+
+.container_listas {
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-bottom: 10px;
+}
+
+#escrita_lista_usuario {
+    font-size: 20px;
+}
+
+.lista_usuario {
+    font-size: 20px;
+}
+
+.container_posts {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+}
+
+.img_lista {
+    width: 125px;
+}

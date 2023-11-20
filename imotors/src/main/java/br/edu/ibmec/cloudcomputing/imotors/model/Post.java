@@ -13,6 +13,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -23,10 +24,9 @@ import jakarta.validation.constraints.NotBlank;
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long Id;
+    private long id;
 
     @ManyToOne
-    @JsonIgnore
     private Usuario usuario;
 
     @Column(nullable = false)
@@ -39,6 +39,10 @@ public class Post {
     @Column(nullable = false)
     @NotBlank(message = "Campo texto do post não pode ser vazio")
     private String article;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "post_id")
+    private List<Streams> streamsDisponiveis;
 
     @Column(nullable = true)
     private String urlImage;
@@ -88,11 +92,11 @@ public class Post {
     }
 
     public long getId() {
-        return Id;
+        return id;
     }
 
     public void setId(long id) {
-        Id = id;
+        this.id = id;
     }
 
     public void addComment(Comments comment){
@@ -105,6 +109,18 @@ public class Post {
 
     public void setUrlImage(String urlImage) {
         this.urlImage = urlImage;
+    }
+
+    public List<Streams> getStreamsDisponiveis() {
+        return streamsDisponiveis;
+    }
+
+    public void setStreamsDisponiveis(List<Streams> streamsDisponiveis) {
+        this.streamsDisponiveis = streamsDisponiveis;
+    }
+
+    public void addStreamDisponiveis(Streams streamDisponivel) {
+        this.streamsDisponiveis.add(streamDisponivel);
     }
 
 }

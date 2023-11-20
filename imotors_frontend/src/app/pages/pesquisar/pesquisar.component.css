@@ -1,0 +1,39 @@
+.container_geral {
+    margin-left: 30vw;
+    width: 40vw;
+    min-height: 77vh;
+    background-color: rgba(29, 28, 42, 1);
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+.container_escrita_pesquisa {
+    margin-top: 10px;
+    color: rgba(245, 126, 182, 1);
+}
+
+#icon_pesquisa {
+    background-color: rgba(245, 126, 182, 1);
+    color: rgba(29, 28, 42, 1);
+}
+
+#pesquisa {
+    padding: 5px;
+    border-radius: 5px;
+    width: 30vw;
+    background-color: rgba(245, 126, 182, 1);
+    color: rgba(29, 28, 42, 1);
+    font-weight: 500;
+}
+
+.container_sugestao_pesquisa {
+    margin-top: 5px;
+    background-color: rgba(245, 126, 182, 1);
+    color: rgba(29, 28, 42, 1);
+    width: 30vw;
+    border: 5px solid rgba(245, 126, 182, 1);
+    border-radius: 5px;
+
+    font-weight: 500;
+}

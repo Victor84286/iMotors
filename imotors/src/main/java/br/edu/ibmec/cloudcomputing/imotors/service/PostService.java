@@ -85,7 +85,7 @@ public class PostService {
 
         Post post = opPost.get();
 
-        String urlImage = this.azureStorageAccountService.uploadFileToAzure(file);
+        String urlImage = this.azureStorageAccountService.uploadFileToAzurePost(file);
         post.setUrlImage(urlImage);
         this.postRepository.save(post);
     }

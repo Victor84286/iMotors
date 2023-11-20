@@ -8,6 +8,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,6 +29,7 @@ import jakarta.validation.Valid;
 @RestController
 @RequestMapping("/post")
 @Tag(name = "Post", description = "")
+@CrossOrigin
 class PostController {
 
     @Autowired
@@ -81,6 +83,5 @@ class PostController {
     public ResponseEntity<String> uploadPostImage(@PathVariable ("id") long id, @RequestParam("file") MultipartFile file) throws PostException, IOException {
         postService.uploadFileToPost(file, id);
         return new ResponseEntity<>(HttpStatus.OK);
-
     }
 }

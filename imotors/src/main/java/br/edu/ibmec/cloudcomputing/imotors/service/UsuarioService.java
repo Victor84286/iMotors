@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import br.edu.ibmec.cloudcomputing.imotors.exception.BusinessException;
+import br.edu.ibmec.cloudcomputing.imotors.model.Post;
 import br.edu.ibmec.cloudcomputing.imotors.model.Usuario;
 import br.edu.ibmec.cloudcomputing.imotors.repository.UsuarioRepository;
 
@@ -56,9 +57,4 @@ public class UsuarioService {
         }
         this._usuarioRepository.delete(pessoaASerExcluida.get());
     }
-
-    public void saveEndereco(Usuario usuario) {
-        this._usuarioRepository.save(usuario);
-    }
-
 }
